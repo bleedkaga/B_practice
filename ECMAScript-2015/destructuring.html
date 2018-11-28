@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let cat = 'ken';
+        // let dog = 'lili';
+        // let zoo = {
+        //     cat: cat,
+        //     dog: dog
+        // }   //通常的写法
+
+        let cat = {
+            mis:'a',
+            s: 'b'
+        };
+        let dog = 'lili2'
+
+        let zoo = {
+            cat, dog
+        }  //ES6进阶版
+        // ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+
+
+        document.write(JSON.stringify(zoo))
+    </script>
+</body>
+</html>

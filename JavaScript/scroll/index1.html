@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      height: 2000px;
+    }
+    div{
+      border:1px solid red;
+      width:200px;
+      height: 200px;
+      position: absolute;
+      top: 1000px;
+      left:300px;
+      padding:10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="item"></div>
+  <script src="jquery.js"></script>
+  <script src="lodash.js"></script>
+  <script>
+    $(window).scroll(debounce(function(){
+        console.log('run')
+        var scrollTop = $('body,html').scrollTop();
+        var outerHeight = $('#item').offset().top + $('#item').outerHeight();
+        console.log(scrollTop, outerHeight)
+        if(scrollTop > outerHeight){
+          //向上滚动
+          $('#item').html('向上滚动').css('background', 'red')
+          return
+        }
+        if(scrollTop < $('#item').offset().top - $(window).height()){
+          //向下滚动
+          $('#item').html('向下滚动').css('background', 'green')
+          return
+        }
+        $('#item').html('可视区域内').css('background', 'transparent')
+    }, 300))
+    function debounce(func, delay){
+      let timer = null;
+      return function(){
+        let context = this;
+        let args = arguments;
+        clearTimeout(timer)
+        timer = setTimeout( function(){
+          func.apply(context, args)
+        }, delay)
+      }
+    }
+  </script>
+</body>
+</html>

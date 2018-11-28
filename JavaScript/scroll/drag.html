@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="keywords" content="拖拽">
+        <meta name="description" content="拖拽">
+        <title>实现拖拽</title>
+        <style type="text/css">
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            #drag{
+                width: 200px;
+                height: 200px;
+                background: red;
+                position: absolute;
+            }
+            #drag:hover{
+              width: 200px;
+              height: 200px;
+              background: red;
+              position: absolute;
+              cursor: move;
+            }
+            #drag i{
+              width: 20px;
+              height:20px;
+              position: absolute;
+            }
+            #drag i:hover{
+              cursor: size;
+            }
+            #drag i:nth-child(1){
+              left:0;
+              top:0;
+            }
+            #drag i:nth-child(1):hover{
+              cursor: nw-resize;
+            }
+            #drag i:nth-child(2){
+              right:0;
+              top:0;
+            }
+            #drag i:nth-child(2):hover{
+              cursor:nesw-resize;
+            }
+            #drag i:nth-child(3){
+              left:0;
+              bottom:0;
+            }
+            #drag i:nth-child(3):hover{
+              cursor: nesw-resize;
+
+            }
+            #drag i:nth-child(4){
+              right:0;
+              bottom:0;
+            }
+            #drag i:nth-child(4):hover{
+              cursor: nw-resize;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="drag">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        <script type="text/javascript">
+            var Drags = function (element, callback) {
+                callback = callback || function () {};
+                var params = {
+                    top: 0,
+                    left: 0,
+                    currentX: 0,
+                    currentY: 0,
+                    flag: false
+                };
+                function getCss(element, key) {
+                    return element.currentStyle ? element.currentStyle[key] : document.defaultView.getComputedStyle(element,null)[key];
+                    // ie用currentStyle
+                }
+                var lefts = getCss(element, "left"),
+                    tops = getCss(element, "top");
+                params.left = lefts !== "auto" ? lefts : 0;
+                params.top = tops !== "auto" ? tops : 0;
+                element.onmousedown = function (event) {
+                    params.flag = true;
+                    event = event || window.event; // ie用后面
+                    params.currentX = event.clientX;
+                    params.currentY = event.clientY;
+                };
+                document.onmousemove = function (event) {
+                    event = event || window.event;
+                    if (params.flag) {
+                        // 现在位置
+                        var nowX = event.clientX,
+                            nowY = event.clientY,
+                        // 需要移动的距离  
+                            disX = nowX - params.currentX,
+                            disY = nowY - params.currentY;
+
+                            console.log('X', nowX, 'Y', nowY)
+                        element.style.width = parseInt(params.left) + disX + 200 + "px";
+                        element.style.height = parseInt(params.top) + disY + 200 + "px";
+                    }
+                };
+                document.onmouseup = function () {
+                    params.flag = false;
+                    var lefts = getCss(element, "left"),
+                        tops = getCss(element, "top");
+                    params.left = lefts !== "auto" ? lefts : 0;
+                    params.top = tops !== "auto" ? tops : 0;
+                }
+            }(document.getElementById('drag'));
+        </script>
+    </body>
+</html>

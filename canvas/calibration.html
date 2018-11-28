@@ -1,0 +1,67 @@
+<html >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<style>
+			*{
+				margin: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<canvas id=c style="border:1px solid grey;"></canvas>
+		</div>
+		<br>
+		<div>
+			<form name='f'>下限:
+				<input name='min' onblur='draw()' value="0" />上限:
+				<input name='max' onblur='draw()' value="100" />
+				<input type="reset" onclick="draw()" value='刷新 ' />
+			</form>
+		</div>
+		<script>
+
+			var myCanvas = document.getElementById("c");
+			var ctx = myCanvas.getContext("2d");
+			var width =  window.innerWidth
+			myCanvas.width =width
+			myCanvas.height =600
+			
+			var w = width >= window.innerWidth ? width - 40 : width
+			var h = 600-10;
+			
+			function draw() {
+			
+				ctx.clearRect(0, 0, w, h);
+			
+			
+				var max = parseInt(document.f.max.value);
+				 
+				var min = parseInt(document.f.min.value);
+			 
+				var ratio = (max - min) / w;
+			
+				var tickSize = 80
+				
+			
+				var tickCnt = Math.ceil(w / tickSize)+1;
+			
+				var unit = tickSize * ratio;
+			
+			
+				ctx.moveTo(15,  h);
+				ctx.lineTo(w+15,  h);
+
+				for (var i = 0; i < tickCnt; i++) {
+					ctx.moveTo(15 + tickSize * i, 580);
+					ctx.lineTo(15 + tickSize * i, 590);
+					ctx.textAlign = 'center';
+					ctx.fillText((min + unit * i).toFixed(2) > max ? max.toFixed() :(min + unit * i).toFixed(2), 20 + tickSize * i,  570);
+					console.log(i);
+				}
+				ctx.strokeStyle = 'red';
+				ctx.stroke();
+			}
+		</script>
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <style>
+        #div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="div"></div>
+  </body>
+  <script>
+  var myTarget = document.getElementById('div')
+  var tween = createjs.Tween.get(myTarget)
+    .to({x:300},400)
+    .set({label:"hello!"})
+    .wait(500).to({alpha:0,visible:false},1000)
+    .call(onComplete);
+    function onComplete(){
+        alert('a')
+    }
+  </script>
+</html>

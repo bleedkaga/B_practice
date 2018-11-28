@@ -1,0 +1,14 @@
+.btn-group{
+	border-top: 1px solid #ddd;
+	padding: 6px 0;
+}
+.btn{
+	min-width: 100px;
+	line-height: 40px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #fff;
+	color: #000;
+	cursor: pointer;
+	margin-right: 10px;
+}

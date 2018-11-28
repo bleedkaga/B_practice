@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background: red;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+    // var let, const, class, extends, super, arrow functions, template string, destructuring, default, rest arguments
+    // var name = 'zach';
+    // while ( true ){
+    //     var name = 'obama';
+    //     document.write(name)
+    //     break;
+    // }
+    // document.write(name)
+
+    var box = document.getElementsByTagName('div')
+    for(var i = 0; i < box.length; i++){
+        box[i].onclick = getIndex(i)
+    }
+
+    function getIndex(i){
+        var onclick = function(){
+            alert(i)
+        }
+
+        return onclick
+    }
+
+    class Animal {
+constructor(){
+       this.type = 'animal'
+    }
+says(say){
+       console.log(this.type + ' says ' + say)
+    }
+}let animal = new Animal()
+animal.says('hello') //animal says hello
+class Cat extends Animal {
+    constructor(){
+        super()
+        this.type = 'cat'
+    }
+}
+let cat = new Cat()
+cat.says('hello') //cat says hello
+
+class Miss extends Animal {
+    constructor(){
+        super();
+        this.type = 'Miss'
+    }
+}
+
+let miss = new Miss()
+miss.says('miss')
+
+const tpl = '<h1>hello</h1>'
+document.write(`<div>${tpl}</div>`)
+    </script>
+</body>
+</html>
