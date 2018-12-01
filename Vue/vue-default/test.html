@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		{{all}}
+		<input type="checkbox" v-model="all" name="">
+		<input type="button"  value="click" @click="click" name="">
+	</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				all: true
+			},
+			methods: {
+				click: function(){
+					this.all = !this.all
+				}
+			}
+		})
+	</script>
+</body>
+</html>

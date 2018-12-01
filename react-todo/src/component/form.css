@@ -1,0 +1,19 @@
+
+.btn{
+	padding: 10px 30px;
+	background:#188fff;
+	color:white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+.btn:focus{
+	outline: none;
+}
+
+button:focus,
+input[type='submit']:focus,
+input[type='button']:focus,{
+	outline: none;
+}

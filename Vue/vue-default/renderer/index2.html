@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../animate.min.css">
+</head>
+<body>
+  <div id="app">
+    <anchored-heading :level="1"> hello </anchored-heading>
+  </div>
+
+  <script src="../vue.js"></script>
+  <script>
+    var getChildrenTextContent = function( children ){
+      console.log(children)
+      return children.map( function( node ){
+        return node.children ? getChildrenTextContent( node.children ) : node.text
+      }).join("")
+    }
+
+    Vue.component("anchored-heading", {
+      render: function( createElement ){
+        var headingId = getChildrenTextContent(this.$slots.default)
+            .toLowerCase()
+            .replace(/\W+/g, '-')
+            .replace(/(^\-|\-$)/g, '');
+
+        return createElement('h'+this.level, [
+          createElement('a', {
+            attrs: {
+              name: headingId,
+              href: '#'+headingId
+            }
+          }, this.$slots.default)
+        ])
+      },
+      props: {
+        level: {
+          type: Number,
+          required: true
+        }
+      }
+    })
+    new Vue({
+      el: "#app"
+    })
+
+
+  </script>
+</body>
+</html>

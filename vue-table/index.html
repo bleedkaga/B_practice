@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none
+        }
+        table{
+            width: 100%;
+            margin-bottom: 24px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            empty-cells: show;
+            border: 1px solid #e9e9e9;
+        }
+        table th{
+            background: #f7f7f7;
+            color: #5c6b77;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        table td,
+        table th{
+            padding: 8px 16px;
+            border: 1px solid #e9e9e9;
+            text-align: left;
+        }
+        table th a{
+            display: inline-block;
+            margin:0 4px;
+            cursor: pointer;
+        }
+        table th a.on,
+        table th a:hover{
+            color: #3399ff;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <v-table :data="data" :columns="columns"></v-table>
+    </div>
+
+    <script src="vue.min.js"></script>
+    <script src="table.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

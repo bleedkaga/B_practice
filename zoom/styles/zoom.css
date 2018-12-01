@@ -1,0 +1,123 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul li{
+    list-style: none;
+}
+.zoom{
+    width: 452px;
+}
+.zoom .zoom_preview{
+    border: 1px solid #ddd;
+    position: relative;
+}
+.zoom .zoom_preview .mask{
+    width: 236px;
+    height: 236px;
+    background: #ff0;
+    border: 1px solid #ddd;
+    cursor: move;
+    opacity: 0.5;
+    position: absolute;
+    right:0;
+    top:0;
+    transition: opacity .1s ease;
+    opacity: 0;
+}
+.zoom .s_mask{
+    width: 100%;
+    height:100%;
+    background: transparent;
+    position: absolute;
+    left:0;
+    top:0;
+    cursor: move;
+}
+.zoom .largeDiv{
+    width: 514px;
+    height: 514px;
+    position: absolute;
+    left: 105%;
+    top: 0;
+    display: none;
+    background:#ddd;
+    background-repeat: no-repeat
+}
+.zoom .zoom_operation{
+    margin-top: 20px;
+    position: relative;
+}
+.zoom_operation:after{
+    content:'';
+    display: table;
+    clear: both
+}
+.zoom .zoom_operation .btn-prev,
+.zoom .zoom_operation .btn-next{
+    width: 22px;
+    height: 58px;
+    position: absolute;
+    top:0;
+    cursor: pointer;
+}
+.zoom .zoom_operation .btn-prev{
+    left: 0;
+}
+.zoom .zoom_operation .btn-prev:after{
+    content:'';
+    width: 20px;
+    display: inline-block;
+    height: 20px;
+    border-left: 4px solid #aaa;
+    border-top: 4px solid #aaa;
+    transform: rotateZ(-45deg);
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -5px;
+}
+.zoom .zoom_operation .btn-next{
+    right: 0;
+}
+.zoom .zoom_operation .btn-disabled:after{
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+.zoom .zoom_operation .btn-next:after{
+    content:'';
+    width: 20px;
+    display: inline-block;
+    height: 20px;
+    border-right: 4px solid #aaa;
+    border-bottom: 4px solid #aaa;
+    transform: rotateZ(-45deg);
+    position: absolute;
+    top:50%;
+    right: 50%;
+    margin-top: -10px;
+    margin-right: -5px;
+}
+.zoom .zoom_operation .operation{
+    width: 380px;
+    overflow: hidden;
+    margin:0 auto;
+}
+.zoom .zoom_operation .operation_inline{
+    width: 456px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+.zoom .zoom_operation .operation_inline li{
+    width: 58px;
+    height: 58px;
+    float: left;
+    margin:0 9px;
+    cursor: pointer;
+}
+.zoom .zoom_operation .operation_inline li img{
+    border: 2px solid transparent;
+}
+.zoom .zoom_operation .operation_inline li.img-hover img{
+    border: 2px solid red;

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" id="input" name="">
+
+	<script type="text/javascript">
+		var inputElement = document.getElementById("input");
+		inputElement.addEventListener('change', handleFiles, false);
+
+		function handleFiles(){
+			var fileList = this.files;
+			console.log(fileList)
+			for(var i = 0; i < fileList.length; i++){
+				var file = fileList[i]
+				console.log(file.name)
+				console.log(file.size)
+				console.log(file.type)
+			}
+		}
+	</script>
+</body>
+</html>

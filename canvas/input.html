@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            position: relative;
+        }
+        .wrap span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: 1px solid #ddd;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+        
+        .wrap input[type='checkbox']{
+            position: absolute;
+            left: 0;
+            top:0;
+            opacity: 0.5;
+            width: 20px;
+            height: 20px;
+        }
+        .wrap input[type='checkbox']:checked + span{
+            background: #188fff;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <input type="checkbox" id="checkbox">
+    <span></span>
+</div>
+
+<button id="disabled">是否禁用了呢？</button>
+
+<script>
+    var box = document.getElementById('checkbox');
+    var btn = document.getElementById('disabled')
+
+    box.onchange = function(e){
+        if(e.target.checked){
+            btn.setAttribute('disabled', true)
+        } else {
+            btn.removeAttribute('disabled')
+        }
+    }
+</script>
+</body>
+</html>

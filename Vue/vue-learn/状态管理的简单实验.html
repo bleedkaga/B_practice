@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue-2.4.4.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{sharedState.message}}
+	</div>
+
+	<div id="app2">
+		{{sharedState.message}}
+
+		<hr>
+		<button onclick="store.setMessageAction('update')">set triggered </button>
+		<button onclick="store.clearMessageAction()">clear triggered </button>
+	</div>
+	
+	<script type="text/javascript">
+		const sourceOfTruth = {
+			message: 'hello world',
+			message2: 'hello world2'
+		}
+
+		const store = {
+			debug : true,
+			state: {
+				message: 'Hello'
+			},
+			setMessageAction( newValue ){
+				if(this.debug) console.log("SetMessageAction triggered with", newValue);
+				this.state.message = newValue;
+			},
+			clearMessageAction(){
+				if(this.debug) console.log('clearMessageAction triggered');
+				this.state.message = ''
+			}
+		}
+
+		const vmA = new Vue({
+			el: "#app",
+			data: {
+				privateState: {},
+				sharedState: store.state
+			}
+		})
+
+		const vmB = new Vue({
+			el: "#app2",
+			data: {
+				privateState: {},
+				sharedState: store.state
+			}
+		})
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div id="app" v-cloak style="width: 500px; margin: 20px auto; border: 1px solid #188fff; padding: 20px;">
+		<div class="message">
+			<v-input v-model="username"></v-input>
+			<br>
+			<v-textarea v-model="message" ref="message"></v-textarea>
+			<br>
+			<button @click="handleSend" class="btn btn-primary">发布</button>
+		</div>
+
+		<list :list="list" @replay="handleReply" @delete="handleDelete"></list>
+	</div>
+
+	<script src="../vue.js"></script>
+	<script src="input.js"></script>
+	<script src="list.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

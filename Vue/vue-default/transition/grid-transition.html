@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul{
+      width: 1200px;
+
+    }
+    ul li{
+      list-style-type: none;
+      width: 50px;
+      height: 50px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      line-height: 50px;
+      text-align: center;
+      float: left;
+      margin: -1px
+    }
+    .list-enter-active, .list-leave-active{
+      transition: all .5s
+    }
+    .list-enter, .list-leave-to{
+      transform: translateX(-10px);
+    }
+    .list-move{
+      transition: transform 1s
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <button @click="change">shutff</button>
+    <transition-group name="list" tag="ul">
+      <li v-for="i in n" :key="i">{{i}}</li>
+    </transition-group>
+  </div>
+  <script src="../lodash.min.js"></script>
+  <script src="../vue.js"></script>
+  <script>
+    function ns(){
+      var s = [];
+      for( var i = 0; i < 320; i++){
+        s.push(i)
+      }
+      return s
+    }
+    var n = ns()
+    new Vue({
+      el: "#app",
+      data: {
+        n: n
+      },
+      mounted(){
+        // setInterval(this.change, 1000)
+      },
+      methods: {
+        change: function(){
+          console.log(this.n)
+            this.n = _.shuffle(this.n)
+        }
+      },
+
+    })
+  </script>
+</body>
+</html>

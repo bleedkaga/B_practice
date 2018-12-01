@@ -3,90 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		*{
-			margin:0;
-			padding:0;
-		}
+	<style type="text/css">
 		canvas{
-			border:1px solid #ddd;
-			display: block;
+			border: 1px solid #ddd;
 		}
 	</style>
 </head>
 <body>
 	<canvas id="canvas"></canvas>
-	<canvas id="myCanvas"></canvas>
-
 	<script>
-		window.onload = function(){
-			var canvas = document.getElementById('canvas')
-
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight
-			var ctx = canvas.getContext('2d')
-			
-			ctx.fillStyle = "red"
-			ctx.fillRect(10,10, 300, 300)
-			ctx.fill()
-			
-
-			ctx.strokeRect(320, 10 , 300, 300)
-			ctx.stroke()
-
-			ctx.arc(790, 160, 150, 0, Math.PI * 2, false)
-			ctx.fillStyle = '#188fff'
-			ctx.fill()
-			ctx.beginPath()
-			ctx.arc(1140, 160, 150, 0, Math.PI * 1, false)
-			ctx.fillStyle = '#188fff'
-			ctx.stroke()
-			ctx.closePath()
-			ctx.save()
-			ctx.rotate(20*Math.PI/180);
-			paramEllipse(ctx, 1000, 30, 100, 50)
-			ctx.restore()
-			
-			calibration(ctx, 300, 600, 100, 4)
-
-		}
-
-		function paramEllipse(context, x, y, a, b){
-			//max是等于1除以长轴值a和b中的较大者
-			//i每次循环增加1/max， 表示度数的增加
-			//这样可以使得每次循环所绘制的路径（弧线）纠结1px
-			var step = (a > b) ? 1 / a : 1 / b;
-			context.beginPath();
-			context.moveTo(x+a, y);  //从椭圆的左端点开始绘制
-			for(var i = 0; i < Math.PI; i += step){
-				//参数方程为x = a * cos(i), y = b * sin(i)
-				//参数为i, 表示度数(弧度)
-				context.lineTo(x + a * Math.cos(i), y + b * Math.sin(i))
-			}
-			context.closePath()
-			context.lineWidth = 2;
-			context.strokeStyle = 'Green'
-			context.fill()
-		}
-
-		function calibration(context, x, y, a, b){ 			//刻度线
-			context.save();
-			var tickSize = a, tickCnt = b, i = 0;
-			context.moveTo(0,  0);
-			context.lineTo(x,  y);
+		var canvas = document.getElementById('canvas')
+		var ctx = canvas.getContext('2d')
+		canvas.width=500;
+		canvas.height = canvas.width
 		
-			for (; i < tickCnt; i++) {
-				context.moveTo(0 + tickSize * i, 50);
-				context.lineTo(0 + tickSize * i, 60);
-				context.textAlign = 'center';
-				context.fillText((300 + 4 * i).toFixed(2), 0 + tickSize * i,  70);
-				//console.log(min + unit * i);
-			}
-			context.stroke();
-			context.restore()
-		}
+		ctx.fillStyle = 'rgb(200, 0, 0)';
+    ctx.fillRect(10, 10, 50, 50);
 
-
+    ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+    ctx.fillRect(30, 30, 50, 50);
 	</script>
 </body>
 </html>

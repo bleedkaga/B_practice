@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="drawing" width="1270"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('drawing')
+		var ctx = canvas.getContext('2d')
+		var bounding = document.body;
+		document.getBoundingClientRect().width
+		console.log(bounding)
+		var width =  bounding.clientWidth;
+		var height = window.screen.height
+		canvas.width=width;
+		canvas.height=height;
+		ctx.lineWidth=1
+		// ctx.moveTo(10, 10)
+		// ctx.lineTo(10, 500)
+
+		// ctx.moveTo(20, 10)
+		// ctx.lineTo(20, 500)
+
+		// ctx.moveTo(30, 10)
+		// ctx.lineTo(3, 500)
+		var widthJoin = 30,
+				heightJoin = 30
+		for(var i = 0; i < width; i++){
+			ctx.moveTo(widthJoin*i, 0)
+			ctx.lineTo(widthJoin*i, height)
+		}
+
+		for(var i = 0; i < width; i++){
+			ctx.moveTo(0, heightJoin*i)
+			ctx.lineTo(width, heightJoin*i)
+		}
+		ctx.strokeStyle="#aaa"
+		ctx.stroke()
+		ctx.beginPath()
+		ctx.lineWidth=3
+		ctx.strokeStyle="red"
+		ctx.fillStyle="#188fff"
+
+		ctx.arc(75,75,13,0,Math.PI*2,true); // 绘制
+		ctx.fill()
+		ctx.stroke()
+
+		ctx.beginPath();
+    ctx.moveTo(75,25);
+    ctx.quadraticCurveTo(25,25,25,62.5);
+    ctx.quadraticCurveTo(25,100,50,100);
+    ctx.quadraticCurveTo(50,120,30,125);
+    ctx.quadraticCurveTo(60,120,65,100);
+    ctx.quadraticCurveTo(125,100,125,62.5);
+    ctx.quadraticCurveTo(125,25,75,25);
+    ctx.strokeStyle="#188fff"
+    ctx.stroke();
+
+    ctx.moveTo(5, 236);
+		ctx.bezierCurveTo(105, 468, 485, 969, 1241, 236);
+		ctx.strokeStyle="#188fff"
+		ctx.stroke()
+		ctx.scale='0.8'
+		canvas.onmousedown = function(e){
+			console.log(e.x)
+		}
+	</script>
+</body>
+</html>

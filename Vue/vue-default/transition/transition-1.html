@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../animate.min.css">
+  <title>Document</title>
+  <style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .56s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    opacity: 0
+    }
+    p{
+      background: blue
+    }
+    .animated{
+      animation-duration: .4s
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="show = !show"> toggle </button>
+
+    <transition :duration="5000" name="fade" >
+      <p v-show="show" >hello world!</p>
+    </transition>
+
+    <button @click="isEditing = !isEditing"></button>
+    <transition>
+      <button v-if="isEditing" key="save">
+        Save
+      </button>
+      <button v-else key="edit">
+        Edit
+      </button>
+    </transition>
+    <hr>
+
+    <button v-bind:key="isEditing">
+      {{isEditing ? 'save': 'edit'}}
+    </button>
+
+    <hr>
+    <h1>使用多个 v-if 的多个元素的过渡可以重写为绑定了动态属性的单个元素的过渡，例如：</h1>
+
+    <button v-bind:key="docstate">
+      {{buttonMessage}}
+    </button>
+
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+    new Vue({
+      el:"#app",
+      data: function(){
+        return {
+          show: true,
+          isEditing:  false,
+          docstate: 'editing'
+        }
+      },
+      computed: {
+        buttonMessage: function () {
+          switch (this.docState) {
+            case 'saved': return 'Edit'
+            case 'edited': return 'Save'
+            case 'editing': return 'Cancel'
+          }
+        }
+      }
+
+    })
+  </script>
+</body>
+</html>

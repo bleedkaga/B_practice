@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+		<div id="app">	</div>
+		<script type="text/javascript" src="../vue.js"></script>
+		<script type="text/javascript">
+			var mixin = {
+				increments: function(){
+					console.log('increaments')
+				},
+				mounted: function(){
+					console.log('mounted is called!')
+				},
+				created: function(){
+					console.log('混合对象的钩子被调用')
+				}
+			}
+			new Vue({
+				el: "#app",
+				created: function(){
+					console.log('实例对象的钩子被调用')
+				},
+				mixins: [mixin]
+			})
+		</script>
+</body>
+</html>

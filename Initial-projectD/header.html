@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hoome{
+            height: 500px;
+            border: 1px solid blue;
+            margin-bottom: 40px;
+        }
+        .floor{
+            border: 1px solid red;;
+            margin-top: 20px;
+            height: 500px;
+            transition: all .3s ease;
+        }
+        .lift ul{
+            position: fixed;
+            left: 20px;
+            top: 20%;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #188fff;
+            list-style: none;
+            padding:0;
+
+        }
+        .lift li {
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #188fff;
+            line-height: 70px;
+        }
+        .lift li:last-child{
+            border-bottom:0
+        }
+        .lift li.on{
+            background: #188fff;;
+            color: white;
+        }
+        .jd_search{
+            position: fixed;
+            left:0;
+            top:0;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid red;
+            background: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            transform: translateY(-1000%);
+            transition: transform .3s ease;
+        }
+        .jd_search.show{
+            transform: translateY(0)
+        }
+    </style>
+</head>
+<body>
+    <div class="lift">
+        <ul>
+            <li class="on">第一层</li>
+            <li>第二层</li>
+            <li>第三层</li>
+            <li>第四层</li>
+        </ul>
+    </div>
+    <div class="hoome"></div>
+    <div class="jd_search">
+        <div class="search_left">
+            
+        </div>
+    </div>
+    <div class="floor">
+
+    </div>
+    <div class="floor">
+
+    </div>
+    <div class="floor">
+
+    </div>
+    <div class="floor">
+
+    </div>
+    <script src="jquery.js"></script>
+
+    <script>
+        $(window).scroll( () => {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            var offsetTop = $('.floor:first').offset().top;
+            if(offsetTop <= scrollTop + window.innerHeight / 2){
+                $('.lift').show()
+                $('.floor:first').css('background', 'red')
+                $('.jd_search').addClass('show')
+            } else {
+                $('.lift').hide();
+                $('.floor:first').css('background', 'transparent')
+                $('.jd_search').removeClass('show')
+            }
+
+            var $floors = $('.floor');
+
+            for(var i = 0; i < $floors.length; i++){
+                var $f = $($floors[i]);
+                if($f.offset().top > scrollTop + window.innerHeight / 2){
+                    break;
+                }
+            }
+            console.log(i)
+            $(`.lift>ul>li:eq(${i-1})`).addClass('on').siblings().removeClass('on')
+        })
+
+        $(() => {
+            $('.lift>ul>li').on('click', function(){
+                let $a = $(this);
+                var index = $a.index();
+                $(`.floor:eq(${index})`).css('background','#'+Math.random().toString().slice(2,8))
+                var offsetTop = $(`.floor:eq(${index})`).offset().top;
+                var offsetHeight = 52;
+
+                $('html').stop(true).animate({scrollTop: offsetTop - offsetHeight}, 300)
+            })
+        })
+    </script>
+</body>
+</html>

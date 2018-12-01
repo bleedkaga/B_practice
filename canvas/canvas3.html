@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="drawing"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('drawing')
+		var ctx = canvas.getContext('2d')
+		var bounding = document.body;
+		console.log(bounding)
+		var width =  bounding.clientWidth;
+		var height = window.screen.height
+		canvas.width=width;
+		canvas.height=height;
+		ctx.lineWidth=1
+		// ctx.moveTo(10, 10)
+		// ctx.lineTo(10, 500)
+
+		// ctx.moveTo(20, 10)
+		// ctx.lineTo(20, 500)
+
+		// ctx.moveTo(30, 10)
+		// ctx.lineTo(3, 500)
+		var widthJoin = 30,
+				heightJoin = 30
+		for(var i = 0; i < width; i++){
+			ctx.moveTo(widthJoin*i, 0)
+			ctx.lineTo(widthJoin*i, height)
+		}
+
+		for(var i = 0; i < width; i++){
+			ctx.moveTo(0, heightJoin*i)
+			ctx.lineTo(width, heightJoin*i)
+		}
+
+		ctx.stroke()
+	</script>
+</body>
+</html>

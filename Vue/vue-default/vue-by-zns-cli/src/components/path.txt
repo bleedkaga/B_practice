@@ -1,0 +1,6 @@
+生活服务订单：  http://edu.wx.palmtrends.com/html/bleed/personal/life-order/index.html
+物业管理订单：  http://edu.wx.palmtrends.com/html/bleed/personal/property-order/index.html
+个人信息管理：  http://edu.wx.palmtrends.com/html/bleed/personal/personal-info/index.html
+
+物业管理 -> 费用缴纳： http://edu.wx.palmtrends.com/html/bleed/property/paycost.html
+物业管理 -> 报事报修： http://edu.wx.palmtrends.com/html/bleed/property/maintenance.html

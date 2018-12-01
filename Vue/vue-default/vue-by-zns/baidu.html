@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" @keyup="get" v-model="t1" name="">
+		<p v-if="myData.length == 0">暂无数据。。。</p>
+		<ul v-else>
+			<li v-for="item in myData"> {{item}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="vue-resource.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: "#app",
+			data: function(){
+				return {
+					t1: '您好',
+					myData: []
+				}
+			},
+			methods: {
+				get(){
+					this.$http.jsonp('https://www.baidu.com/s', {
+						wd: this.t1
+					}, {
+						jsonp: '_jsonpocs9tfji5d'
+					}).then(function(res){
+						console.log(res)
+					}, function(res){
+						console.log('fail', res)
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

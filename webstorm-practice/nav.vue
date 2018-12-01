@@ -1,0 +1,1 @@
+<template>    </template><script>    export default {        name: "nav",        data(){            return {            }        },        methods: {            _func(){                            }        }    }</script><style scoped></style>

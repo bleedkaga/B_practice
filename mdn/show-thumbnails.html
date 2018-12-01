@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" multiple onchange="handleFiles(this.files)" name="">
+	<div id="preview"></div>
+	<script type="text/javascript">
+
+		var preview = document.getElementById("preview")
+		function handleFiles(files){
+			console.log(files)
+			for(var i = 0; i < files.length; i++){
+				var file = files[i]
+				console.log(file.type)
+				console.log(file.type.startsWith('image/'))
+				if(!file.type.startsWith('image/')) continue;
+
+				var img = document.createElement('img');
+				img.classList.add('obj');
+				img.file = file;
+				var fileURL = window.URL.createObjectURL(file)
+				console.log(fileURL)
+				img.src=fileURL
+				preview.appendChild(img);
+
+				// var reader = new FileReader();
+				// reader.onload = (function(aImg){
+				// 	return function(e){
+				// 		aImg.src = e.target.result
+				// 	}
+				// })(img)
+
+				// reader.readAsDataURL(file)
+			}
+		}
+	</script>
+</body>
+</html>

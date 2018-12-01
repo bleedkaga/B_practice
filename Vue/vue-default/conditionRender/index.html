@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 如果在两个模板中使用相同的元素  Vue仅仅是复用而已 -->
+		<template v-if="loginType === 'username'">
+			<label>Username:</label>
+			<input type="text" placeholder="username" >
+		</template>
+		<template v-else>
+			<label>Address</label> 
+			<input type="text" placeholder="Address" >
+		</template>
+		<button @click="toggle">Toggle</button>
+		
+		<!-- 为不需要复用的元素添加一个唯一性的key便不会被复用 -->
+		<template v-if="loginType === 'username'">
+			<label>Username:</label>
+			<input type="text" placeholder="username" key="username">
+		</template>
+		<template v-else>
+			<label>Address</label> 
+			<input type="text" placeholder="Address" key="address">
+		</template>
+		<button @click="toggle">Toggle</button>
+		<span v-for="i in 4000" style="display: block; margin: 20px;">{{i}}</span>
+		</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				loginType: 'username'
+			},
+			methods: {
+				toggle: function(){
+					this.loginType = this.loginType === 'username' ? 'false': 'username'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

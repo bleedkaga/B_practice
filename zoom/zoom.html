@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿京东商品详情放大镜</title>
+    <link rel="stylesheet" href="styles/zoom.css">
+</head>
+<body>
+    <div id="zoom" class="zoom">
+        <div class="zoom_preview" id="zoomPreview">
+            <img src="imgs/md/1.jpg" id="zoomImg" class="zoom_preview_img" data-lg="imgs/lg/1.jpg" alt="">
+            <div class="mask" id="zoomMask"></div>
+            <div class="s_mask" id="SMask"></div>
+
+            <div class="largeDiv" id="largeDiv"></div>
+        </div>
+        <div class="zoom_operation">
+            <span class="btn-prev btn-disabled"></span>
+            <div class="operation">
+                <ul class="operation_inline">
+                    <li class="img-hover"><img src="imgs/sm/1.jpg" data-md="imgs/md/1.jpg" data-lg="imgs/lg/1.jpg" alt=""></li>
+                    <li><img src="imgs/sm/2.jpg" data-md="imgs/md/2.jpg" data-lg="imgs/lg/2.jpg"alt=""></li>
+                    <li><img src="imgs/sm/3.jpg" data-md="imgs/md/3.jpg" data-lg="imgs/lg/3.jpg"alt=""></li>
+                    <li><img src="imgs/sm/4.jpg" data-md="imgs/md/4.jpg" data-lg="imgs/lg/4.jpg"alt=""></li>
+                    <li><img src="imgs/sm/5.jpg" data-md="imgs/md/5.jpg" data-lg="imgs/lg/5.jpg"alt=""></li>
+                    <li><img src="imgs/sm/6.jpg" data-md="imgs/md/6.jpg" data-lg="imgs/lg/6.jpg"alt=""></li>
+                </ul>
+            </div>
+            <span class="btn-next"></span>
+        </div>
+    </div>
+
+    <script src="scripts/zoom.js"></script>
+</body>
+</html>

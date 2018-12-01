@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性</title>
+</head>
+<body>
+	
+	<div id="example">
+		<p>Original message: "{{message}}"</p>
+		<p>Computed reversed message: "{{reversedMessage}}"</p>
+	</div>
+	<script type="text/javascript" src="../vue.js"></script>
+	<script type="text/javascript">
+		//计算属性
+		//不要在模板中放入太多逻辑
+		var vm = new Vue({
+			el : "#example",
+			data: {
+				message: 'Hello'
+			},
+			computed: {
+				reversedMessage: function(){
+					return this.message.split('').reverse().join('')
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

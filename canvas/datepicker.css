@@ -1,0 +1,120 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+ul li, ol li {
+    list-style: none;
+    list-style-type: none;
+}
+body,html{
+    background: #ddd;
+    height: 100%;
+    font-family: Arial;
+}
+em, i{
+    font-style: normal;
+}
+.wrap{
+    max-width: 640px;
+    height: 100%;
+    background: #fff;
+    margin:0 auto;
+    padding: 10px;
+}
+.datepicker-head{
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.datepicker-head .btn{
+    width: 40px;
+    flex: 1;
+    height: 40px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    text-align:center;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    border-radius: 4px;
+}
+.datepicker-head em{
+    width: 50%;
+    text-align:center;
+    flex: 6;
+    line-height: 41px;
+    font-style: normal;
+    font-size: 20px;
+    color:#aaa;
+    background:#fff;
+}
+.datepicker-head .month{
+    width: 20px;
+    display: inline-block;
+}
+.datepicker-body ol li{
+    display: flex;
+}
+.datepicker-body ol li span{
+    flex: 1
+}
+.datepicker-body ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.datepicker-body ol .time{
+    background:#f4f4f4;
+    margin:0;
+    height: auto;
+    border: none;
+    font-size: 14px;
+    padding: 4px; 0;
+}
+.datepicker-body  .time{
+    width: 14.2%;
+    display: inline-block;
+    float: left;
+    font-size:0;
+    text-align:center;
+    height: 50px;
+    border: 2px solid white;
+    box-sizing: border-box;
+}
+
+.datepicker-body ul .inline{
+    background:#e8f5fe;
+}
+.datepicker-body ul .selected{
+    background:#1da0f0;
+    color:white;
+    border-radius: 4px;
+}
+.datepicker-body ul .disabled em,
+.datepicker-body ul .disabled b,
+.datepicker-body ul .disabled p{
+    color:#929292;
+}
+.datepicker-body ul .selected em,
+.datepicker-body ul .selected b,
+.datepicker-body ul .selected p{
+    color:white;
+}
+
+.datepicker-body .time b{
+    font-weight: normal;
+    display: block;
+    font-size: 12px;
+}
+.datepicker-body .time em{
+    color:#343434;
+    font-size: 12px;
+}
+.datepicker-body .time p{
+    font-size: 12px;
+    color:#1ba4f2;
+    line-height: 1;
+}

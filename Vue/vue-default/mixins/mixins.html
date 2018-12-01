@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript" src="../vue.js"></script>
+	<script type="text/javascript">
+
+		//mixins 的作用是： 可以让组件共用一些功能
+
+		var myMixin = {
+			created: function(){
+				this.hello()
+			},
+			methods: {
+				hello: function(){
+					console.log('hello from mixin!')
+				}
+			}
+		};
+
+		var Component = Vue.extend({
+			mixins: [myMixin]
+		})
+
+		var component = new Component();
+
+		//如果有冲突的hooks, 则先调用混入的函数
+		var mixin = {
+			created: function(){
+				console.log('mixin hook called!')
+			}
+		}
+
+		new Vue({
+			mixins: [mixin],
+			created: function(){
+				console.log('component hook called')
+			}
+		})
+
+		//如果有冲突的方法， 则以组件中的方法为准
+		var mixin2 = {
+			methods: {
+				foo: function(){
+					console.log('foo')
+				},
+				conflicting: function(){
+					console.log('from mixin2')
+				}
+			}
+		}
+
+		var vm = new Vue({
+			mixins: [mixin2],
+			methods: {
+				bar: function(){
+					console.log('bar')
+				},
+				conflicting: function(){
+					console.log('self')
+				}
+			}
+		})
+
+		vm.foo()
+		vm.bar()
+		vm.conflicting()
+
+		//全局的方法
+		Vue.mixin({
+			created: function(){
+				var myOption = this.$options.myOption;
+				if(myOption){
+					console.log(myOption)
+				}
+			}
+		})
+
+		new Vue({
+			myOption: 'hello'
+		})
+
+		//自定义策略？？？
+		Vue.config.optionMergeStrategies.myOption = function(toVal, fromVal){
+			// return mergeVal
+		}
+	</script>
+</body>
+</html>

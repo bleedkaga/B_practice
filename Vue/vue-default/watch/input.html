@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="info.app" name="">
+		<input type="text" v-model="info.app2" name="">
+		<button v-bind:disabled="isDisabled" >click</button>
+	</div>
+
+	<script type="text/javascript" src="../vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: "#app",
+			data: function(){
+				return {
+					isDisabled: false,
+					info: {
+						app: 1,
+						app2: 2
+					}
+				}
+			},
+			watch: {
+				"info.app": function(old, val){
+					this.isDisabled = old === val ? true : false
+				}
+			}
+		})
+	</script>
+</body>
+</html>

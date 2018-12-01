@@ -1,0 +1,84 @@
+[v-cloak]{
+    display: none;
+}
+.tabs{
+    font-size: 14px;
+    color: #657160
+}
+.tabs-bar{
+    user-select: none;
+}
+.tabs-bar:after{
+    content:"";
+    display: block;
+    width:100%;
+    height: 1px;
+    background: #d7dde4;
+    margin-top: -1px;
+}
+.tabs-tab{
+    display: inline-block;
+    padding: 4px 16px;
+    margin-right: 6px;
+    background: #fff;
+    border: 1px solid #d7dde4;
+    cursor: pointer;
+    position:relative
+}
+.tabs-tab-active{
+    color: #3399ff;
+    border-top: 1px solid #3399ff;
+    border-bottom: 1px solid #fff;
+}
+.tabs-tab-active:before{
+    content: "";
+    display: block;
+    height: 1px;
+    background: #3399ff;
+    position: absolute;
+    top:0;
+    left:-1px;
+    right:-1px;
+}
+.tabs-content{
+    padding:8px 0
+}
+.closeable{
+   width: 12px;
+   height: 12px;
+   vertical-align: middle;
+   border-radius: 12px;
+   display: inline-block;
+   background: #ddd;
+   position: relative;
+}
+.tabs-tab-active .closeable{
+    background: #3399ff
+}
+.closeable:before,
+.closeable:after{
+    position: absolute;
+    content: "";
+    width:8px;
+    height: 1px;
+    top: 50%;
+    left:50%;
+    margin-left: -4px;
+    background: white;
+    display: inline-block;
+}
+.closeable:before{
+    transform: rotateZ(45deg);
+}
+.closeable:after{
+    transform: rotateZ(-45deg);
+}
+.slide-enter-active,
+.slide-leave-active{
+    transition: all .3s ease;
+}
+.slide-enter,
+.slide-leave-to{
+    transform: translateX(300px);
+    opacity: 0;
+}

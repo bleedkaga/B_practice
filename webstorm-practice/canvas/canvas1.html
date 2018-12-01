@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+        }
+        #canvas{
+            /* border: 1px solid #ddd; */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        h1{
+            text-align: center;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to Canvas!</h1>
+<canvas id="canvas"></canvas>
+
+
+<script>
+    var canvas = document.getElementById('canvas')
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - 68;
+    var ctx = canvas.getContext('2d');
+
+    function renderGrid(){
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#ddd'
+        for(var i = 0; i <= canvas.width; i++){
+            ctx.moveTo(i*100, 0);
+            ctx.lineTo(i*100, canvas.height);
+            ctx.stroke();
+        }
+
+        for(var i = 0; i <= canvas.height; i++){
+            ctx.moveTo(0, i*100);
+            ctx.lineTo(canvas.width, i*100);
+            ctx.stroke();
+        }
+    }
+
+    renderGrid();
+
+
+    ctx.fillStyle = '#188fff'
+    ctx.fillRect(0,0,100, 100);
+    ctx.fillRect(canvas.width-100,0, 100, 100);
+    ctx.fillRect(0,canvas.height-100,100, 100);
+    ctx.fillRect(canvas.width-100,canvas.height-100,100, 100);
+    ctx.fillRect(canvas.width / 2 - 50,canvas.height/2-50,100, 100);
+
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width, canvas.height)
+        renderGrid()
+        ctx.fillRect(Math.random() * canvas.width - 100,Math.random() * canvas.height-100,100, 100);
+
+    }, 1000)
+
+
+</script>
+</body>
+</html>

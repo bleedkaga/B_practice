@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="hello" name="" @keydown.space="click">
+		<input type="text" v-model="w" name="" >
+		<img v-bind:src="url" :width="w">
+	</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: function(){
+				return {
+					hello : 'welcome',
+					url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
+					w: '200px'
+				}
+			},
+			methods: {
+				click: function(){
+					alert('a')
+				}
+			}
+		})
+	</script>
+</body>
+</html>
